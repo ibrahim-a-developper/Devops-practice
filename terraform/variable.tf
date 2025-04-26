@@ -14,3 +14,11 @@ variable "aws_region" {
   type        = string
 
 }
+
+locals {
+  key_name = {
+    dev   = "dev"
+    stage = "stage"
+    prod  = "prod"  
+  }
+}
