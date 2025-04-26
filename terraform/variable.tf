@@ -15,8 +15,8 @@ variable "aws_region" {
 
 locals {
   key_name = {
-    dev   = "dev"
-    stage = "stage"
-    prod  = "prod"
+    dev   = "dev1"
+    stage = "stage1"
+    prod  = "prod1"
   }
 }
