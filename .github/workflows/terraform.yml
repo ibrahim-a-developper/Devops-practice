@@ -46,6 +46,11 @@ jobs:
           ssh-keygen -t rsa -b 4096 -C "toureibrahimd2@gmail.com" -f ~/.ssh/id_rsa -N ""
           echo "SSH public key generated:"
           cat ~/.ssh/id_rsa.pub
+
+      - name: change directory to terraform
+        run: cd terraform 
+        shell: bash
+        
       # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
       - name: Terraform Init
         run: terraform init
