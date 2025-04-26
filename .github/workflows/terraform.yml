@@ -29,7 +29,7 @@ jobs:
         uses: hashicorp/setup-terraform@v1
 
       - name: Run my local action
-        uses: ibrahim-a-developper/github-ssh-key-generator@master
+        uses: ibrahim-a-developper/github-ssh-key-generator@v1
         with:
           email: toureibrahimd2@gmail.com
 
