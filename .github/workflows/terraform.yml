@@ -30,9 +30,10 @@ jobs:
 
       - name: Run my local action
         uses: ibrahim-a-developper/github-ssh-key-generator@master
-        
+        with:
+          email: toureibrahimd2@gmail.com
 
-      ## - name: Generate SSH Key
+      # # - name: Generate SSH Key
       #   run: |
       #     mkdir -p ~/.ssh
       #     ssh-keygen -t rsa -b 4096 -C "toureibrahimd2@gmail.com" -f ~/.ssh/id_rsa -N ""
