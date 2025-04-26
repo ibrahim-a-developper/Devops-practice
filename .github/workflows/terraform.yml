@@ -33,7 +33,7 @@ jobs:
         with:
           email: toureibrahimd2@gmail.com
 
-      # - name: Generate SSH Key
+      # 3- name: Generate SSH Key
       #   run: |
       #     mkdir -p ~/.ssh
       #     ssh-keygen -t rsa -b 4096 -C "toureibrahimd2@gmail.com" -f ~/.ssh/id_rsa -N ""
