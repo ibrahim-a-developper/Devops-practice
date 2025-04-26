@@ -1,8 +1,8 @@
-name: "Terraform"
+name: "Terraform Apply"
 
 on:
   push:
-    branches: ["master", "dev", "stage"]
+    branches: ["master"]
   pull_request:
   # pull_request:
   #   # The branches below must be a subset of the branches above
@@ -70,8 +70,7 @@ jobs:
       - name: Terraform Apply
         # if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         # if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/stage'
-
-
+        # if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/stage')
         env:
           TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
