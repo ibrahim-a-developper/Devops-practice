@@ -30,11 +30,11 @@ jobs:
 
       - name: Terraform Init
         run: terraform -chdir=terraform init
-      
-      - name: Terraform plan 1
+
+      - name: Terraform plan
         run: terraform -chdir=terraform plan -input=false
 
-      - name: Terraform apply 1
+      - name: Terraform apply
         run: terraform -chdir=terraform apply -input=false
 
       # - name: Terraform Plan and Apply for each workspace
@@ -45,13 +45,12 @@ jobs:
       #       echo "=== Processing the workspace: $ws ==="
 
       #       export TF_WORKSPACE=$ws
-            
+
       #       terraform plan -input=false
       #       terraform apply --auto-approve
-            
+
       #       echo "=== Workspace $ws completed ==="
       #     done
-
 #       - name: Terraform Apply and Plan Multi-Workspace
 #         run: |
 #           cd terraform
@@ -60,14 +59,12 @@ jobs:
 
 #           for ws in "${WORKSPACES[@]}"; do
 #             echo "=== "Processing the workspace: $ws" ==="
-            
-            
+
 #             terraform workspace select $ws || terraform workspace new $ws
-            
-            
+
 #             terraform plan -input=false
 #             terraform apply --auto-approve -out=tfplan_$ws
-            
+
 #             echo "=== Workspace $ws completed ==="
 #           done
 
