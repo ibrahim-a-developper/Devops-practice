@@ -30,6 +30,9 @@ jobs:
 
       - name: Terraform Init
         run: terraform -chdir=terraform init
+      
+      - name: Terraform plan 1
+        run: terraform -chdir=terraform plan -input=false
 
       - name: Terraform apply 1
         run: terraform -chdir=terraform apply -input=false
