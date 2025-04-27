@@ -1,0 +1,70 @@
+# name: "Terraform Plan"
+
+# on:
+#   push:
+#     branches: ["master", "dev", "stage"]
+#   pull_request:
+
+# permissions:
+#   contents: read
+
+# jobs:
+#   terraform:
+#     name: "Terraform"
+#     runs-on: ubuntu-latest
+#     environment: production
+
+#     defaults:
+#       run:
+#         shell: bash
+
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+
+#       - name: Setup Terraform
+#         uses: hashicorp/setup-terraform@v1
+
+#       - name: Run SSH Key Generator
+#         uses: ibrahim-a-developper/github-ssh-key-generator@master
+#         with:
+#           email: toureibrahimd2@gmail.com
+      
+#       - name: Terraform Init
+#         run: terraform -chdir=terraform init
+
+#       - name: Determine workspace
+#         id: workspace
+#         run: |
+#           if [[ "${{ github.ref }}" == "refs/heads/master" || ("${{ github.event_name }}" == "pull_request" && "${{ github.base_ref }}" == "master") ]]; then
+#             echo "name=prod" >> $GITHUB_OUTPUT
+#           elif [[ "${{ github.ref }}" == "refs/heads/stage" || ("${{ github.event_name }}" == "pull_request" && "${{ github.base_ref }}" == "stage") ]]; then
+#             echo "name=stage" >> $GITHUB_OUTPUT
+#           else
+#             echo "name=dev" >> $GITHUB_OUTPUT
+#           fi
+
+#       - name: Create Terraform Workspaces
+#         run: |
+#           terraform -chdir=terraform workspace new dev || echo "Workspace dev already exists"
+#           terraform -chdir=terraform workspace new stage || echo "Workspace stage already exists"
+#           terraform -chdir=terraform workspace new prod || echo "Workspace prod already exists"
+          
+#       - name: Select Terraform Workspace
+#         run: |
+#           echo "Selecting workspace: ${{ steps.workspace.outputs.name }}"
+#           terraform -chdir=terraform workspace select ${{ steps.workspace.outputs.name }}
+#           echo "Selected workspace: $(terraform -chdir=terraform workspace show)"
+
+#       - name: Terraform Validate
+#         run: terraform -chdir=terraform validate
+
+#       - name: Terraform Format
+#         run: terraform -chdir=terraform fmt -check
+
+#       - name: Terraform Plan
+#         env:
+#           TF_VAR_aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#           TF_VAR_aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#           TF_VAR_aws_region: ${{ secrets.AWS_REGION }}
+#         run: terraform -chdir=terraform plan -input=false
