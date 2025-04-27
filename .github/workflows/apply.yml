@@ -101,7 +101,8 @@ jobs:
             
             terraform init
             terraform plan -out=tfplan_$ws
-            terraform destroy -auto-approve tfplan_$ws
+            terraform destroy -auto-approve 
             
             echo "=== Workspace $ws terminé ==="
           done
+#terraform apply -auto-approve tfplan_$ws
