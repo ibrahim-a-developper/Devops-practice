@@ -26,8 +26,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
-          cli_config_credentials_token: "z1tgugxB2UCuOQ.atlasv1.WkFxkqp9aXVekfyeZiIKQtZBWyDbZZRx048MB4pj7RzbZI3pFHWPev6aCFtPM0PNe4o"
-
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
       - name: Terraform Init
         run: terraform -chdir=terraform init
@@ -50,5 +49,6 @@ jobs:
             
             echo "=== Workspace $ws completed ==="
           done
+
 #terraform apply -auto-approve tfplan_$ws
 # terraform destroy -auto-approve
