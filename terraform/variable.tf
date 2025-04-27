@@ -28,4 +28,4 @@ variable "public_key" {
   
 }
 
-#z1tgugxB2UCuOQ.atlasv1.WkFxkqp9aXVekfyeZiIKQtZBWyDbZZRx048MB4pj7RzbZI3pFHWPev6aCFtPM0PNe4o
+##z1tgugxB2UCuOQ.atlasv1.WkFxkqp9aXVekfyeZiIKQtZBWyDbZZRx048MB4pj7RzbZI3pFHWPev6aCFtPM0PNe4o
