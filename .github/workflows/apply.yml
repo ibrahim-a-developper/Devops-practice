@@ -31,7 +31,7 @@ jobs:
       - name: Terraform Init
         run: terraform -chdir=terraform init
 
-      - name: Terraform apply
+      - name: Terraform apply 1
         run: terraform -chdir=terraform apply -input=false
 
       # - name: Terraform Plan and Apply for each workspace
