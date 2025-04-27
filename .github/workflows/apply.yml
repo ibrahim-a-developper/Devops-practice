@@ -97,8 +97,8 @@ jobs:
           for ws in "${WORKSPACES[@]}"; do
             echo "=== Traitement du workspace: $ws ==="
             
-            terraform workspace new $ws
-            terraform workspace select $ws 
+            
+            terraform workspace select $ws || terraform workspace new $ws
             
             terraform init
             terraform plan -out=tfplan_$ws
