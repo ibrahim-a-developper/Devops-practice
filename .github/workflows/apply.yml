@@ -43,7 +43,7 @@ jobs:
             
             terraform workspace select $ws || terraform workspace new $ws
             
-            t
+            
             terraform plan -input=false
             terraform apply --auto-approve -out=tfplan_$ws
             
