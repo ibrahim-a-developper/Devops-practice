@@ -4,8 +4,7 @@ terraform {
     organization = "AWS-traininig" 
 
     workspaces { 
-         tags = ["ws"]
-    #   name = "ws" 
+      name = "ws" 
     } 
   } 
 }

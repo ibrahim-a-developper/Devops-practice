@@ -31,25 +31,42 @@ jobs:
       - name: Terraform Init
         run: terraform -chdir=terraform init
 
-      - name: Terraform Plan and Apply per Workspace
-        run: |
-          cd terraform
-          
-          # Define your environments
-          WORKSPACES=("dev" "stage" "prod")
-          
-          for ws in "${WORKSPACES[@]}"; do
-            echo "=== Processing environment: $ws ==="
+      - name: Terraform plan
+        run: terraform -chdir=terraform plan -input=false
+
+      # - name: Terraform Plan and Apply for each workspace
+      #   run: |
+      #     cd terraform
+      #     WORKSPACES=("dev" "stage" "prod")
+      #     for ws in "${WORKSPACES[@]}"; do
+      #       echo "=== Processing the workspace: $ws ==="
+
+      #       export TF_WORKSPACE=$ws
             
-            # Set Terraform Cloud workspace
-            export TF_WORKSPACE="${ws}"
+      #       terraform plan -input=false
+      #       terraform apply --auto-approve
             
-            # Run Terraform commands for this workspace
-            terraform init -reconfigure
-            terraform plan -input=false -out=tfplan
+      #       echo "=== Workspace $ws completed ==="
+      #     done
+
+#       - name: Terraform Apply and Plan Multi-Workspace
+#         run: |
+#           cd terraform
+
+#           WORKSPACES=("dev" "stage" "prod")
+
+#           for ws in "${WORKSPACES[@]}"; do
+#             echo "=== "Processing the workspace: $ws" ==="
             
-            # Comment out for safety, uncomment when ready
-            # terraform apply -auto-approve tfplan
             
-            echo "=== Environment $ws completed ==="
-          done
+#             terraform workspace select $ws || terraform workspace new $ws
+            
+            
+#             terraform plan -input=false
+#             terraform apply --auto-approve -out=tfplan_$ws
+            
+#             echo "=== Workspace $ws completed ==="
+#           done
+
+# #terraform apply -auto-approve tfplan_$ws
+# # terraform destroy -auto-approve
