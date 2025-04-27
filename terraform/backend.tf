@@ -1,11 +1,11 @@
-terraform {
-  cloud {
+terraform { 
+  cloud { 
+    
+    organization = "AWS-traininig" 
 
-    organization = "AWS-traininig"
-
-    workspaces {
-      tags = ["ws"]
-      name = "ws"
-    }
-  }
+    workspaces { 
+         tags = ["ws"]
+    #   name = "ws" 
+    } 
+  } 
 }
