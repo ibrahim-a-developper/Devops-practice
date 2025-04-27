@@ -31,18 +31,16 @@ jobs:
       - name: Terraform Init
         run: terraform -chdir=terraform init
 
-      - name: Terraform Plan and Apply for each workspace
+      - name: Terraform Plan and Apply per workspace
         run: |
           cd terraform
           WORKSPACES=("dev" "stage" "prod")
           for ws in "${WORKSPACES[@]}"; do
             echo "=== Processing the workspace: $ws ==="
-
             export TF_WORKSPACE=$ws
-            
+            terraform init -input=false
             terraform plan -input=false
             terraform apply --auto-approve
-            
             echo "=== Workspace $ws completed ==="
           done
 
