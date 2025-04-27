@@ -43,9 +43,9 @@ jobs:
             
             terraform workspace select $ws || terraform workspace new $ws
             
-            terraform init
+            t
             terraform plan -input=false
-            terraform apply -out=tfplan_$ws
+            terraform apply --auto-approve -out=tfplan_$ws
             
             echo "=== Workspace $ws completed ==="
           done
