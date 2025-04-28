@@ -31,7 +31,7 @@ jobs:
       - name: Terraform Init
         run: terraform -chdir=terraform init
 
-      - name: Terraform plan 
+      - name: Terraform plan
         run: terraform -chdir=terraform plan -input=false
 
       # - name: Terraform apply
@@ -40,17 +40,18 @@ jobs:
       - name: Terraform Plan and Apply for each workspace
         run: |
           cd terraform
-     
+
           for ws in "dev.tfvars" "stage.tfvars" "prod.tfvars"; do
             echo "=== Processing the workspace: $ws ==="
 
             
 
-          
-            terraform apply -var-file=$ws -input=false
+
+            terraform apply -var-file=$ws -auto-approve -input=false
 
             echo "=== Workspace $ws completed ==="
           done
+
 #       - name: Terraform Apply and Plan Multi-Workspace
 #         run: |
 #           cd terraform
