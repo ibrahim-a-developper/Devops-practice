@@ -39,7 +39,6 @@ jobs:
 
       - name: Terraform Plan and Apply for each workspace
         run: |
-          cd terraform
 
           for ws in "dev.tfvars" "stage.tfvars" "prod.tfvars"; do
             echo "=== Processing the workspace: $ws ==="
@@ -47,7 +46,7 @@ jobs:
             
 
 
-            terraform  apply  -auto-approve -var-file=$ws
+            terraform -chdir=terrafor apply  -auto-approve -var-file=$ws
 
             echo "=== Workspace $ws completed ==="
           done
