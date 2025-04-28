@@ -47,7 +47,7 @@ jobs:
             
 
 
-            terraform apply -var-file=$ws -auto-approve -input=false
+            terraform apply  -auto-approve -var-file=$ws
 
             echo "=== Workspace $ws completed ==="
           done
