@@ -13,14 +13,13 @@ variable "aws_region" {
   type        = string
 }
 
-locals {
-  key_name = {
-    dev   = "dev2"
-    stage = "stage1"
-    prod  = "prod1"
-  }
-}
 
+variable "key_name" {
+  description = "Key Name"
+  type        = string
+  default   ="dev2"
+  
+}
 
 variable "public_key" {
   description = "Public Key"

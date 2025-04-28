@@ -32,3 +32,9 @@ override.tf.json
 # CLI configuration files
 .terraformrc
 terraform.rc
+
+# Ignore all 
+!dev.tfvars
+!stage.tfvars
+!prod.tfvars
+

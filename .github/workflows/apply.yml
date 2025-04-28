@@ -41,13 +41,13 @@ jobs:
         run: |
           cd terraform
      
-          for ws in "dev" "stage" "prod"; do
+          for ws in "dev.tfvars" "stage.tfvars" "prod.tfvars"; do
             echo "=== Processing the workspace: $ws ==="
 
-            terraform workspace select $ws || terraform workspace new $ws
+            
 
           
-            terraform apply -auto-approve -input=false
+            terraform plan -var-file=$ws -input=false
 
             echo "=== Workspace $ws completed ==="
           done
