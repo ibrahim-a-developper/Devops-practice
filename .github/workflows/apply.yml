@@ -31,11 +31,11 @@ jobs:
       - name: Terraform Init
         run: terraform -chdir=terraform init
 
-      - name: Terraform plan q
+      - name: Terraform plan 
         run: terraform -chdir=terraform plan -input=false
 
       - name: Terraform apply
-        run: terraform -chdir=terraform destroy -auto-approve
+        run: terraform -chdir=terraform apply -auto-approve -input=false
 
       # - name: Terraform Plan and Apply for each workspace
       #   run: |
