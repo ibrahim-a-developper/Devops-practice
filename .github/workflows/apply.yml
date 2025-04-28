@@ -34,19 +34,24 @@ jobs:
       - name: Terraform plan
         run: terraform -chdir=terraform plan -input=false
 
-      # - name: Terraform applyf
+      # - name: Terraform apply
       #   run: terraform -chdir=terraform apply -auto-approve -input=false
+
       - name: Terraform Plan and Apply for each workspace
-        run: terraform -chdir=terraform apply  -auto-approve -input=false
-        # |
+        run: |
+          cd terraform
 
-        #   for ws in "dev.tfvars" "stage.tfvars" "prod.tfvars"; do
-        #     echo "=== Processing the workspace: $ws ==="
+          for ws in "dev.tfvars" "stage.tfvars" "prod.tfvars"; do
+            echo "=== Processing the workspace: $ws ==="
 
-        #     terraform -chdir=terraform apply  -auto-approve -var-file=$ws
+            
 
-        #     echo "=== Workspace $ws completed ==="
-        #   done
+
+            terraform  apply  -auto-approve -var-file=$ws
+
+            echo "=== Workspace $ws completed ==="
+          done
+
 #       - name: Terraform Apply and Plan Multi-Workspace
 #         run: |
 #           cd terraform
