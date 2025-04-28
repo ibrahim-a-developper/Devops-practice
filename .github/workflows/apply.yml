@@ -40,8 +40,8 @@ jobs:
       - name: Terraform Plan and Apply for each workspace
         run: |
           cd terraform
-          WORKSPACES=("dev" "stage" "prod")
-          for ws in "${WORKSPACES[@]}"; do
+     
+          for ws in "dev" "stage" "prod"; do
             echo "=== Processing the workspace: $ws ==="
 
             terraform workspace select $ws || terraform workspace new $ws
