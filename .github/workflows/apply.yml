@@ -38,7 +38,7 @@ jobs:
       #   run: terraform -chdir=terraform apply -auto-approve -input=false
 
       - name: Terraform Plan and Apply for each workspace
-        run: terraform -chdir=terraform apply  -auto-approve -var-file=stage.tfvars
+        run: terraform -chdir=terraform apply  -auto-approve 
         # |
 
         #   for ws in "dev.tfvars" "stage.tfvars" "prod.tfvars"; do
