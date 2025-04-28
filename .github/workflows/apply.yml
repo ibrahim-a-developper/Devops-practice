@@ -47,7 +47,7 @@ jobs:
             
 
           
-            terraform plan -var-file=$ws -input=false
+            terraform apply -var-file=$ws -input=false
 
             echo "=== Workspace $ws completed ==="
           done
