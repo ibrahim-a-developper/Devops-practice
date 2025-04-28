@@ -44,7 +44,7 @@ jobs:
           for ws in "${WORKSPACES[@]}"; do
             echo "=== Processing the workspace: $ws ==="
 
-            export TF_WORKSPACE=$ws
+            terraform workspace select $ws || terraform workspace new $ws
 
           
             terraform apply -auto-approve -input=false
