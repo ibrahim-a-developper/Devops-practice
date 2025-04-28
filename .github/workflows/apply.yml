@@ -35,7 +35,7 @@ jobs:
         run: terraform -chdir=terraform plan -input=false
 
       - name: Terraform apply
-        run: terraform -chdir=terraform apply -input=false
+        run: terraform -chdir=terraform apply 
 
       # - name: Terraform Plan and Apply for each workspace
       #   run: |
